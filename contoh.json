@@ -1,0 +1,11 @@
+{
+  "firstName": "Budi",
+  "address": {
+    "city": "Semarang",
+    "streat": "belum ada",
+    "country": "Indonesia"
+  },
+  "age": 30,
+  "married": true,
+  "lastName": "Nugraha"
+}

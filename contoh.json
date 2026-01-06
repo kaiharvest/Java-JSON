@@ -1,11 +1,13 @@
 {
-  "firstName": "Budi",
   "address": {
-    "city": "Semarang",
-    "streat": "belum ada",
-    "country": "Indonesia"
+    "city": "Cepu",
+    "country": "Indonesia",
+    "street": "Jalan Randublatung"
   },
-  "age": 30,
-  "married": true,
-  "lastName": "Nugraha"
+  "hobbies": [
+    "Berenang",
+    "Basket"
+  ],
+  "id": "1",
+  "name": "Joko"
 }

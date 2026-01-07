@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.ObjectMapper;
-import tools.jackson.databind.exc.JsonNodeException;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +11,7 @@ import java.util.Map;
 public class JsonArrayTest {
 
     @Test
-    void createJsonArray() throws JsonNodeException {
+    void createJsonArray() throws Exception {
         List<String> hobbies = List.of("Coding", "Reading", "Traveling");
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -22,7 +21,7 @@ public class JsonArrayTest {
     }
 
     @Test
-    void createJsonArrayObject() throws JsonNodeException {
+    void createJsonArrayObject() throws Exception {
         List<Map<String, Object>> hobbies = List.of(
                 Map.of("Coding", "Kampus"),
                 Map.of("Traveling", "Bali"),
@@ -37,7 +36,7 @@ public class JsonArrayTest {
     }
 
     @Test
-    void readJsonArray() throws JsonNodeException {
+    void readJsonArray() throws Exception {
         String json = """
                 ["Coding","Reading","Traveling"]
                 """;
@@ -50,7 +49,7 @@ public class JsonArrayTest {
     }
 
     @Test
-    void readJsonArrayObject() throws JsonNodeException {
+    void readJsonArrayObject() throws Exception {
         String json = """
             [
                 {

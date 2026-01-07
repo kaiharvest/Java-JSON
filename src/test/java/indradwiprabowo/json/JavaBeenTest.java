@@ -9,7 +9,7 @@ import java.util.List;
 public class JavaBeenTest {
 
     @Test
-    void createJson() {
+    void createJson() throws Exception {
         Person person = new Person();
         person.setId("1");
         person.setName("Joko");
@@ -28,7 +28,7 @@ public class JavaBeenTest {
     }
 
     @Test
-    void createObjectFormJson() {
+    void createObjectFormJson() throws Exception {
         String json = """
                 {
                     "address":

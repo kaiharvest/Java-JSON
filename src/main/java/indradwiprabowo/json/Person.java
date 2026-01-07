@@ -1,5 +1,9 @@
 package indradwiprabowo.json;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 import java.util.List;
 
@@ -9,13 +13,36 @@ public class Person {
 
     private String name;
 
+    @JsonProperty("fullName")
+    private String fullName;
+
+    @JsonIgnore
+    private String password;
+
     private List<String> hobbies;
 
     private Address address;
 
     private Date createAt;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date updateAt;
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Date getCreateAt() {
         return createAt;

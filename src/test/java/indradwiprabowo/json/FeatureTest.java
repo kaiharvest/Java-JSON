@@ -2,11 +2,10 @@ package indradwiprabowo.json;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.MapperFeature;
-import tools.jackson.databind.ObjectMapper;
-import tools.jackson.databind.SerializationFeature;
-import tools.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.util.List;
 
@@ -15,9 +14,8 @@ public class FeatureTest {
 
     @Test
     void mapperFeature() throws Exception {
-        ObjectMapper objectMapper = JsonMapper.builder()
-                .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
-                .build();
+        ObjectMapper objectMapper = new ObjectMapper()
+                .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
 
         String json = """
                 {"ID":"1", "Name":"Indra"}
@@ -30,12 +28,10 @@ public class FeatureTest {
 
     @Test
     void deserializationFeature() throws Exception {
-        ObjectMapper objectMapper = JsonMapper.builder()
-                .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
-                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-                .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-                .build();
-
+        ObjectMapper objectMapper = new ObjectMapper()
+                .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true)
+                .configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true)
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         String json = """
                 {"ID":"1", "Name":"Indra", "age":"22", "hobbies":"Coding"}
@@ -48,7 +44,7 @@ public class FeatureTest {
     }
 
     @Test
-    void serializationFeature() {
+    void serializationFeature() throws Exception {
         Person person = new Person();
         person.setId("1");
         person.setName("Joko");
@@ -60,11 +56,24 @@ public class FeatureTest {
         address.setCountry("Indonesia");
         person.setAddress(address);
 
-        ObjectMapper objectMapper = JsonMapper.builder()
-                .enable(SerializationFeature.INDENT_OUTPUT)
-                .build();
+        ObjectMapper objectMapper = new ObjectMapper()
+                .configure(SerializationFeature.INDENT_OUTPUT, true);
+
         String json = objectMapper.writeValueAsString(person);
 
+        System.out.println(json);
+    }
+
+    @Test
+    void serializationInclusion() throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper()
+                .configure(SerializationFeature.INDENT_OUTPUT, true);
+
+        Person person = new Person();
+        person.setId("1");
+        person.setName("Indra");
+
+        String json = objectMapper.writeValueAsString(person);
         System.out.println(json);
     }
 

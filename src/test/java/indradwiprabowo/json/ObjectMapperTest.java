@@ -2,7 +2,7 @@ package indradwiprabowo.json;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import tools.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ObjectMapperTest {
 

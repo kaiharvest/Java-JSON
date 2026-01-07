@@ -1,5 +1,6 @@
 package indradwiprabowo.json;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -67,7 +68,8 @@ public class FeatureTest {
     @Test
     void serializationInclusion() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper()
-                .configure(SerializationFeature.INDENT_OUTPUT, true);
+                .configure(SerializationFeature.INDENT_OUTPUT, true)
+                .setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
         Person person = new Person();
         person.setId("1");

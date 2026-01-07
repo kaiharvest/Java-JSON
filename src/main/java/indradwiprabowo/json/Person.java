@@ -1,5 +1,6 @@
 package indradwiprabowo.json;
 
+import java.util.Date;
 import java.util.List;
 
 public class Person {
@@ -11,6 +12,26 @@ public class Person {
     private List<String> hobbies;
 
     private Address address;
+
+    private Date createAt;
+
+    private Date updateAt;
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
 
     public Address getAddress() {
         return address;

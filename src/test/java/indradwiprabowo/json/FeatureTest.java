@@ -5,12 +5,13 @@ import org.junit.jupiter.api.Test;
 import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.MapperFeature;
 import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.SerializationFeature;
 import tools.jackson.databind.json.JsonMapper;
 
 import java.util.List;
 
 
-public class MapperFeatureTest {
+public class FeatureTest {
 
     @Test
     void mapperFeature() throws Exception {
@@ -44,6 +45,27 @@ public class MapperFeatureTest {
         Assertions.assertEquals("1", person.getId());
         Assertions.assertEquals("Indra", person.getName());
         Assertions.assertEquals(List.of("Coding"), person.getHobbies());
+    }
+
+    @Test
+    void serializationFeature() {
+        Person person = new Person();
+        person.setId("1");
+        person.setName("Joko");
+        person.setHobbies(List.of("Berenang", "Basket"));
+
+        Address address = new Address();
+        address.setStreet("Jalan Randublatung");
+        address.setCity("Cepu");
+        address.setCountry("Indonesia");
+        person.setAddress(address);
+
+        ObjectMapper objectMapper = JsonMapper.builder()
+                .enable(SerializationFeature.INDENT_OUTPUT)
+                .build();
+        String json = objectMapper.writeValueAsString(person);
+
+        System.out.println(json);
     }
 
 }
